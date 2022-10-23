@@ -12,9 +12,14 @@ import {
   ListItem,
   Box,
 } from "@material-ui/core";
-import { MenuOutlined } from "@material-ui/icons";
+import {
+  MenuOutlined,
+  GridOnOutlined,
+  ShowChartTwoTone,
+} from "@material-ui/icons";
 import { getMenus } from "../../services/service";
 import { useHistory } from "react-router-dom";
+import "./style.scss";
 
 type PageComponentProps = {
   children?: ReactNode;
@@ -53,14 +58,15 @@ export function PageComponent(props: PageComponentProps) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List
-        style={{
-          width: 250,
-        }}
-      >
+      <List>
         {menus.map((menu, _index) => (
           <>
             <ListItem key={menu.path}>
+              {menu.type === "chart" ? (
+                <ShowChartTwoTone />
+                ) : (
+                <GridOnOutlined />
+              )}
               <ListItemText
                 primary={menu.title}
                 onClick={() => history.push(menu.path)}
