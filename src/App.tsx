@@ -1,10 +1,16 @@
-import React from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import { Home } from "./page/Home";
+
+import "./styles/global.scss";
 
 function App() {
   return (
-    <div className="App">
-      <h1>DASHBOARD FES</h1>
-    </div>
+    <BrowserRouter forceRefresh>
+      <Switch>
+        <Route path="/" exact component={Home} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
