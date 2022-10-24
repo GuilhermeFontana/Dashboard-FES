@@ -85,7 +85,7 @@ export function PageComponent(props: PageComponentProps) {
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu">
             <Button onClick={toggleDrawer("left", true)}>
-              <MenuOutlined color="inherit" />
+              <MenuOutlined className="menu-icon" />
             </Button>
             <Drawer
               anchor={"left"}
