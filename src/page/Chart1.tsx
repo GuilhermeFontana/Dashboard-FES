@@ -76,17 +76,17 @@ export function Chart1() {
                     >
                       <FormControlLabel
                         value="opcao1"
-                        control={<Radio />}
+                        control={<Radio color="primary" />}
                         label="Opção 1"
                       />
                       <FormControlLabel
                         value="opcao2"
-                        control={<Radio />}
+                        control={<Radio color="primary" />}
                         label="Opção 2"
                       />
                       <FormControlLabel
                         value="opcao3"
-                        control={<Radio />}
+                        control={<Radio color="primary" />}
                         label="Opção 3"
                       />
                     </RadioGroup>
@@ -96,17 +96,33 @@ export function Chart1() {
                     <FormGroup>
                       <FormControlLabel
                         control={
-                          <Checkbox checked onChange={() => {}} name="opcao1" />
+                          <Checkbox
+                            checked
+                            color="primary"
+                            onChange={() => {}}
+                            name="opcao1"
+                          />
                         }
                         label="Opção 1"
                       />
                       <FormControlLabel
-                        control={<Checkbox onChange={() => {}} name="opcao2" />}
+                        control={
+                          <Checkbox
+                            color="primary"
+                            onChange={() => {}}
+                            name="opcao2"
+                          />
+                        }
                         label="Opção 2"
                       />
                       <FormControlLabel
                         control={
-                          <Checkbox checked onChange={() => {}} name="opcao3" />
+                          <Checkbox
+                            checked
+                            color="primary"
+                            onChange={() => {}}
+                            name="opcao3"
+                          />
                         }
                         label="Opção 3"
                       />
