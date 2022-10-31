@@ -33,116 +33,114 @@ export function Chart1() {
   };
 
   return (
-    <div>
-      <PageComponent title="Gráfico 1">
-        <div className="graph1">
-          <header>
-            <strong>Titulo</strong>
-            <div className="actions">
-              <FilterList
-                color="primary"
-                onClick={() => setFormShow(!formShow)}
+    <PageComponent title="Gráfico 1">
+      <div className="graph1">
+        <header>
+          <strong>Titulo</strong>
+          <div className="actions">
+            <FilterList
+              color="primary"
+              onClick={() => setFormShow(!formShow)}
+            />
+            <Refresh color="primary" />
+          </div>
+        </header>
+        <main>
+          <Box>
+            <Collapse in={formShow}>
+              <FilterForm onSubmit={() => {}}>
+                <FormControl>
+                  <InputLabel id="demo-mutiple-name-label">Select</InputLabel>
+                  <Select
+                    multiple
+                    value={selectValue}
+                    onChange={handleChange}
+                    input={<Input />}
+                  >
+                    {selectValues.map((value) => (
+                      <MenuItem key={value} value={value}>
+                        {value}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <FormControl>
+                  <FormLabel id="demo-radio-buttons-group-label">
+                    Radio
+                  </FormLabel>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="opcao2"
+                    name="radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="opcao1"
+                      control={<Radio color="primary" />}
+                      label="Opção 1"
+                    />
+                    <FormControlLabel
+                      value="opcao2"
+                      control={<Radio color="primary" />}
+                      label="Opção 2"
+                    />
+                    <FormControlLabel
+                      value="opcao3"
+                      control={<Radio color="primary" />}
+                      label="Opção 3"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                <FormControl>
+                  <FormLabel component="legend">Checkbox</FormLabel>
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked
+                          color="primary"
+                          onChange={() => {}}
+                          name="opcao1"
+                        />
+                      }
+                      label="Opção 1"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          color="primary"
+                          onChange={() => {}}
+                          name="opcao2"
+                        />
+                      }
+                      label="Opção 2"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked
+                          color="primary"
+                          onChange={() => {}}
+                          name="opcao3"
+                        />
+                      }
+                      label="Opção 3"
+                    />
+                  </FormGroup>
+                </FormControl>
+              </FilterForm>
+            </Collapse>
+            <Collapse in={!formShow}>
+              <BarsChart
+                data={data}
+                bars={[{ title: "Coluna 1" }, { title: "Coluna 2" }, {}]}
+                xAxisLabel="Legenda de baixo"
+                yAxisLabel="Legenda lateral"
+                legend
               />
-              <Refresh color="primary" />
-            </div>
-          </header>
-          <main>
-            <Box>
-              <Collapse in={formShow}>
-                <FilterForm onSubmit={() => {}}>
-                  <FormControl>
-                    <InputLabel id="demo-mutiple-name-label">Select</InputLabel>
-                    <Select
-                      multiple
-                      value={selectValue}
-                      onChange={handleChange}
-                      input={<Input />}
-                    >
-                      {selectValues.map((value) => (
-                        <MenuItem key={value} value={value}>
-                          {value}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel id="demo-radio-buttons-group-label">
-                      Radio
-                    </FormLabel>
-                    <RadioGroup
-                      aria-labelledby="demo-radio-buttons-group-label"
-                      defaultValue="opcao2"
-                      name="radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="opcao1"
-                        control={<Radio color="primary" />}
-                        label="Opção 1"
-                      />
-                      <FormControlLabel
-                        value="opcao2"
-                        control={<Radio color="primary" />}
-                        label="Opção 2"
-                      />
-                      <FormControlLabel
-                        value="opcao3"
-                        control={<Radio color="primary" />}
-                        label="Opção 3"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel component="legend">Checkbox</FormLabel>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked
-                            color="primary"
-                            onChange={() => {}}
-                            name="opcao1"
-                          />
-                        }
-                        label="Opção 1"
-                      />
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            color="primary"
-                            onChange={() => {}}
-                            name="opcao2"
-                          />
-                        }
-                        label="Opção 2"
-                      />
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked
-                            color="primary"
-                            onChange={() => {}}
-                            name="opcao3"
-                          />
-                        }
-                        label="Opção 3"
-                      />
-                    </FormGroup>
-                  </FormControl>
-                </FilterForm>
-              </Collapse>
-              <Collapse in={!formShow}>
-                <BarsChart
-                  data={data}
-                  bars={[{ title: "Coluna 1" }, { title: "Coluna 2" }, {}]}
-                  xAxisLabel="Legenda de baixo"
-                  yAxisLabel="Legenda lateral"
-                  legend
-                />
-              </Collapse>
-            </Box>
-          </main>
-        </div>
-      </PageComponent>
-    </div>
+            </Collapse>
+          </Box>
+        </main>
+      </div>
+    </PageComponent>
   );
 }
