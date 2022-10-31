@@ -9,27 +9,16 @@ import {
   Label,
 } from "recharts";
 import { getRandomColors } from "../../utils/randomColor";
+import { IChart } from "../../interfaces/chart";
 import "./style.scss";
 
-type BarChartProps = {
-  data: {
-    name: string;
-    value0: number;
-    value1?: number;
-    value2?: number;
-    value3?: number;
-    value4?: number;
-  }[];
+type BarChartProps = IChart & {
   bars: {
     title?: string;
   }[];
-  yAxisLabel: string;
-  xAxisLabel: string;
-  legend?: boolean;
-  tooltip?: boolean;
-};
+} ;
 
-export function BarsChart(props: BarChartProps) {
+export function BarsChart (props: BarChartProps) {
   return (
     <BarChart width={750} height={450} data={props.data}>
       <CartesianGrid strokeDasharray="3 3" />

@@ -63,9 +63,9 @@ export function PageComponent(props: PageComponentProps) {
           <>
             <ListItem key={menu.path}>
               {menu.type === "chart" ? (
-                <ShowChartTwoTone />
-                ) : (
-                <GridOnOutlined />
+                <ShowChartTwoTone onClick={() => history.push(menu.path)} />
+              ) : (
+                <GridOnOutlined onClick={() => history.push(menu.path)} />
               )}
               <ListItemText
                 primary={menu.title}
