@@ -33,7 +33,7 @@ export function Chart3(props: any) {
   };
 
   return (
-    <PageComponent title="grid1">
+    <PageComponent title="Gráfico 3">
       <div className="grid1">
         <header>
           <strong>Titulo</strong>
