@@ -6,6 +6,11 @@ export function getMenus() {
         type: "chart" 
       },  
       { 
+        title: "Ovinos Tosquiados", 
+        path: "/OvinosTosquiados", 
+        type: "chart" 
+      }, 
+      { 
         title: "Vacas Ordenhadas", 
         path: "/VacasOrdenhadas", 
         type: "chart" 

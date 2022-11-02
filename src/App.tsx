@@ -6,6 +6,7 @@ import { Chart2 } from "./page/Chart2";
 import { Chart3 } from "./page/Chart3";
 import { Chart4 } from "./page/Chart4";
 import { EfetivoDosRebanhos } from "./page/EfetivoDosRebanhos";
+import { OvinosTosquiados } from "./page/OvinosTosquiados";
 import { VacasOrdenhadas } from "./page/VacasOrdenhadas";
 
 import "./styles/global.scss";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/chart3" exact component={Chart3} />
         <Route path="/chart4" exact component={Chart4} />
         <Route path="/EfetivoDosRebanhos" exact component={EfetivoDosRebanhos} />
+        <Route path="/OvinosTosquiados" exact component={OvinosTosquiados} />
         <Route path="/VacasOrdenhadas" exact component={VacasOrdenhadas} />
       </Switch>
     </BrowserRouter>
