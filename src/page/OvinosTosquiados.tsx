@@ -14,7 +14,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { FilterList, Refresh } from "@material-ui/icons";
-import { BiaxialLineChart } from "../components/BiaxialLineChart";
+import { BarsChart } from "../components/BarsChart";
 import { FilterForm } from "../components/FilterForm";
 import { PageComponent } from "../components/PageComponent";
 import { getOvinosTosquiados } from "../services/dataServices";
@@ -145,7 +145,7 @@ export function OvinosTosquiados() {
             </Collapse>
             <Collapse in={!formShow}>
               {!!data && !!data.datas ? (
-                <BiaxialLineChart
+                <BarsChart
                   data={data.datas}
                   xLabels={data.xLabels}
                   tooltip
