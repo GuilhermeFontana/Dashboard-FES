@@ -17,7 +17,7 @@ import {
   GridOnOutlined,
   ShowChartTwoTone,
 } from "@material-ui/icons";
-import { getMenus } from "../../services/service";
+import { getMenus } from "../../services/menuServices";
 import { useHistory } from "react-router-dom";
 import "./style.scss";
 

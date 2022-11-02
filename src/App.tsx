@@ -5,6 +5,7 @@ import { Chart1 } from "./page/Chart1";
 import { Chart2 } from "./page/Chart2";
 import { Chart3 } from "./page/Chart3";
 import { Chart4 } from "./page/Chart4";
+import { EfetivoDosRebanhos } from "./page/EfetivoDosRebanhos";
 
 import "./styles/global.scss";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/chart2" exact component={Chart2} />
         <Route path="/chart3" exact component={Chart3} />
         <Route path="/chart4" exact component={Chart4} />
+        <Route path="/EfetivoDosRebanhos" exact component={EfetivoDosRebanhos} />
       </Switch>
     </BrowserRouter>
   );
