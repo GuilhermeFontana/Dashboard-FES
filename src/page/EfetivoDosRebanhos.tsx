@@ -11,6 +11,7 @@ import {
   FormControlLabel,
   Checkbox,
   FormGroup,
+  CircularProgress,
 } from "@material-ui/core";
 import { FilterList, Refresh } from "@material-ui/icons";
 import { BiaxialLineChart } from "../components/BiaxialLineChart";
@@ -138,13 +139,22 @@ export function EfetivoDosRebanhos() {
               </FilterForm>
             </Collapse>
             <Collapse in={!formShow}>
-              {!!data && !!data.datas && (
+              {!!data && !!data.datas ? (
                 <BiaxialLineChart
                   data={data.datas}
                   xLabels={data.xLabels}
                   tooltip
                   legend
                 />
+              ) : selectedAnos.length && selectedRebanhos.length ? (
+                <div className="no-chart-box">
+                  <CircularProgress />
+                </div>
+              ) : (
+                <div className="no-chart-box">
+                  <strong>Escolha os dados que deseja ver nos filtros</strong>
+                  <FilterList color="primary" />
+                </div>
               )}
             </Collapse>
           </Box>
