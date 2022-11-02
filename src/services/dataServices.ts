@@ -74,3 +74,80 @@ export async function getEfetivoDosRebanhos(years: number[], herds: string[]) {
             return null;
         })
 }
+
+export async function getVacasOrdenhadas(years: number[], locations: string[]) {
+    let locationsString = ""
+    if (locations.includes("Brasil"))
+        locationsString = "N1[all]";
+
+    locationsString += !locationsString ? "N2[" : "|N2[";
+    locations.filter(x => x !== "BR").forEach(x => {
+        switch (x) {
+            case "Norte":
+                locationsString += "1,";
+                break;
+            case "Nordeste":
+                locationsString += "2,";
+                break;
+            case "Centro-Oeste":
+                locationsString += "3,";
+                break;
+            case "Sudeste":
+                locationsString += "4,";
+                break;
+            case "Sul":
+                locationsString += "5,";
+                break;
+        }
+    })
+    locationsString += "]";
+
+    const stringRequets = `https://servicodados.ibge.gov.br/api/v3/agregados/94/periodos/${years.join("|")}/variaveis/107?localidades=${locationsString}`;
+
+    return await axios.get(stringRequets)
+        .then(function (response) {
+            const { series } = response.data[0].resultados[0]
+            const data: {
+                xLabels: string[],
+                datas: {
+                    name: string;
+                    value0: number;
+                    value1?: number | undefined;
+                    value2?: number | undefined;
+                    value3?: number | undefined;
+                    value4?: number | undefined;
+                }[]
+            } = { xLabels: [], datas: [] };
+
+            let index = 0
+            series.forEach((serie: any) => {
+                data.xLabels.push(serie.localidade.nome);
+                if (index === 0){
+                    data.datas = Object.entries(serie.serie).map(([key, value]) => {
+                        return {
+                            name: key,
+                            value0: Number(value)
+                        };
+                    });
+                }
+                else {
+                    Object.values(serie.serie).forEach((value, i) => {
+                        data.datas[i] = {
+                            ...data.datas[i],
+                            ...Object.fromEntries([[`value${index}`, Number(value)]])
+                        }
+                    })
+                }
+                
+                index++;
+            });
+            
+            console.log(data);
+            return data;
+        })
+        .catch(function (error) {
+            console.log(error);
+
+            return null;
+        })
+}

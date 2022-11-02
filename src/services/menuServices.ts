@@ -4,6 +4,11 @@ export function getMenus() {
         title: "Efetivo Dos Rebanhos", 
         path: "/EfetivoDosRebanhos", 
         type: "chart" 
+      },  
+      { 
+        title: "Vacas Ordenhadas", 
+        path: "/VacasOrdenhadas", 
+        type: "chart" 
       }, 
     ]
   }
