@@ -12,11 +12,7 @@ import { getRandomColors } from "../../utils/randomColor";
 import { IChart } from "../../interfaces/chart";
 import "./style.scss";
 
-type BarChartProps = IChart & {
-  bars: {
-    title?: string;
-  }[];
-} ;
+type BarChartProps = IChart ;
 
 export function BarsChart (props: BarChartProps) {
   return (
@@ -41,12 +37,12 @@ export function BarsChart (props: BarChartProps) {
       {(props.tooltip ||
         props.tooltip === null ||
         props.tooltip === undefined) && <Tooltip />}
-      {props.bars.map((bar, index) => {
+      {props.xLabels.map((label, index) => {
         return (
           <Bar
             dataKey={`value${index}`}
             fill={getRandomColors()}
-            name={bar.title || " "}
+            name={label || " "}
           />
         );
       })}

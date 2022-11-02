@@ -134,7 +134,7 @@ export function Chart2(props: any) {
             <Collapse in={!formShow}>
               <BiaxialLineChart
                 data={data}
-                lines={[{ title: "Coluna 1" }, { title: "Coluna 2" }, {}]}
+                xLabels={[]}
                 xAxisLabel="Legenda de baixo"
                 yAxisLabel="Legenda lateral"
                 legend

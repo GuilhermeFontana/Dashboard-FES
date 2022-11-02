@@ -132,7 +132,7 @@ export function Chart1() {
             <Collapse in={!formShow}>
               <BarsChart
                 data={data}
-                bars={[{ title: "Coluna 1" }, { title: "Coluna 2" }, {}]}
+                xLabels={[]}
                 xAxisLabel="Legenda de baixo"
                 yAxisLabel="Legenda lateral"
                 legend

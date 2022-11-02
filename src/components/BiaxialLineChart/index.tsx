@@ -10,11 +10,7 @@ import {
 import { IChart } from "../../interfaces/chart";
 import { getRandomColors } from "../../utils/randomColor";
 
-type BiaxialLineChartProps = IChart & {
-  lines: {
-    title?: string;
-  }[];
-};
+type BiaxialLineChartProps = IChart ;
 
 export function BiaxialLineChart(props: BiaxialLineChartProps) {
   return (
@@ -26,14 +22,14 @@ export function BiaxialLineChart(props: BiaxialLineChartProps) {
       {(props.tooltip ||
         props.tooltip === null ||
         props.tooltip === undefined) && <Tooltip />}
-      {props.lines.map((line, index) => {
+      {props.xLabels.map((label, index) => {
         return (
           <Line
             yAxisId="left"
             type="monotone"
             dataKey={`value${index}`}
             stroke={getRandomColors()}
-            name={line.title || " "}
+            name={label || " "}
           />
         );
       })}

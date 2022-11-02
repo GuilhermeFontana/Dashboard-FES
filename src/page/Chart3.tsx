@@ -134,6 +134,7 @@ export function Chart3(props: any) {
             <Collapse in={!formShow}>
               <ComposedsChart
                 data={data}
+                xLabels={[]}
                 comp={{ value: "value0", title: "Coluna 1" }}
                 xAxisLabel="Legenda de baixo"
                 yAxisLabel="Legenda lateral"

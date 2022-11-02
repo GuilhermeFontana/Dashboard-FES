@@ -7,8 +7,9 @@ export interface IChart {
         value3?: number;
         value4?: number;
       }[];
-      yAxisLabel: string;
-      xAxisLabel: string;
+      yAxisLabel?: string;
+      xAxisLabel?: string;
       legend?: boolean;
       tooltip?: boolean;
+      xLabels: string[];
 }
