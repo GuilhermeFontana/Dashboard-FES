@@ -1,6 +1,7 @@
 //@ts-nocheck
 
 import axios from "axios";
+import { parseWithAll, parseWithOnlySerie } from "../utils/parseIbgeResponse";
 
 export async function getEfetivoDosRebanhos(years: number[], herds: string[]) {
     const herdsNumber = herds.map(x => {
@@ -27,46 +28,8 @@ export async function getEfetivoDosRebanhos(years: number[], herds: string[]) {
     return await axios.get(stringRequets)
         .then(function (response) {
             const { resultados } = response.data[0];
-            const data: {
-                xLabels: string[],
-                datas: {
-                    name: string;
-                    value0: number;
-                    value1?: number | undefined;
-                    value2?: number | undefined;
-                    value3?: number | undefined;
-                    value4?: number | undefined;
-                }[]
-            } = { xLabels: [], datas: [] };
 
-            let index = 0
-            resultados.forEach((res: any) => {
-                const { classificacoes, series } = res;
-
-                data.xLabels.push(Object.values(classificacoes[0].categoria)[0]);
-
-                if (index === 0) {
-                    data.datas = Object.entries(series[0].serie).map(([key, value]) => {
-                        return {
-                            name: key,
-                            value0: Number(value)
-                        };
-                    });
-                }
-                else {
-                    Object.values(series[0].serie).forEach((value, i) => {
-                        data.datas[i] = {
-                            ...data.datas[i],
-                            ...Object.fromEntries([[`value${index}`, Number(value)]])
-                        }
-                    })
-                }
-
-                index++;
-            });
-
-            console.log(data)
-            return data;
+            return parseWithAll(resultados);
         })
         .catch(function (error) {
             console.log(error);
@@ -107,43 +70,8 @@ export async function getVacasOrdenhadas(years: number[], locations: string[]) {
     return await axios.get(stringRequets)
         .then(function (response) {
             const { series } = response.data[0].resultados[0]
-            const data: {
-                xLabels: string[],
-                datas: {
-                    name: string;
-                    value0: number;
-                    value1?: number | undefined;
-                    value2?: number | undefined;
-                    value3?: number | undefined;
-                    value4?: number | undefined;
-                }[]
-            } = { xLabels: [], datas: [] };
 
-            let index = 0
-            series.forEach((serie: any) => {
-                data.xLabels.push(serie.localidade.nome);
-                if (index === 0){
-                    data.datas = Object.entries(serie.serie).map(([key, value]) => {
-                        return {
-                            name: key,
-                            value0: Number(value)
-                        };
-                    });
-                }
-                else {
-                    Object.values(serie.serie).forEach((value, i) => {
-                        data.datas[i] = {
-                            ...data.datas[i],
-                            ...Object.fromEntries([[`value${index}`, Number(value)]])
-                        }
-                    })
-                }
-                
-                index++;
-            });
-            
-            console.log(data);
-            return data;
+            return parseWithOnlySerie(series);
         })
         .catch(function (error) {
             console.log(error);
@@ -184,43 +112,8 @@ export async function getOvinosTosquiados(years: number[], locations: string[]) 
     return await axios.get(stringRequets)
         .then(function (response) {
             const { series } = response.data[0].resultados[0]
-            const data: {
-                xLabels: string[],
-                datas: {
-                    name: string;
-                    value0: number;
-                    value1?: number | undefined;
-                    value2?: number | undefined;
-                    value3?: number | undefined;
-                    value4?: number | undefined;
-                }[]
-            } = { xLabels: [], datas: [] };
 
-            let index = 0
-            series.forEach((serie: any) => {
-                data.xLabels.push(serie.localidade.nome);
-                if (index === 0){
-                    data.datas = Object.entries(serie.serie).map(([key, value]) => {
-                        return {
-                            name: key,
-                            value0: Number(value || 0)
-                        };
-                    });
-                }
-                else {
-                    Object.values(serie.serie).forEach((value, i) => {
-                        data.datas[i] = {
-                            ...data.datas[i],
-                            ...Object.fromEntries([[`value${index}`, Number(value)]])
-                        }
-                    })
-                }
-                
-                index++;
-            });
-            
-            console.log(data);
-            return data;
+            return parseWithOnlySerie(series);
         })
         .catch(function (error) {
             console.log(error);
@@ -286,48 +179,8 @@ export async function getProduçãoPeixesFrutosMar(years: number[], products: st
     return await axios.get(stringRequets)
         .then(function (response) {
             const { resultados } = response.data[0];
-            const data: {
-                xLabels: string[],
-                datas: {
-                    name: string;
-                    value0: number;
-                    value1?: number | undefined;
-                    value2?: number | undefined;
-                    value3?: number | undefined;
-                    value4?: number | undefined;
-                }[]
-            } = { xLabels: [], datas: [] };
 
-            let index = 0
-            resultados.forEach((res: any) => {
-                const { classificacoes, series } = res;
-
-                console.log(series)
-
-                data.xLabels.push(Object.values(classificacoes[0].categoria)[0]);
-
-                if (index === 0) {
-                    data.datas = Object.entries(series[0].serie).map(([key, value]) => {
-                        return {
-                            name: key,
-                            value0: Number(value)
-                        };
-                    });
-                }
-                else {
-                    Object.values(series[0].serie).forEach((value, i) => {
-                        data.datas[i] = {
-                            ...data.datas[i],
-                            ...Object.fromEntries([[`value${index}`, Number(value)]])
-                        }
-                    })
-                }
-
-                index++;
-            });
-
-            console.log(data)
-            return data;
+            return parseWithAll(resultados);
         })
         .catch(function (error) {
             console.log(error);
