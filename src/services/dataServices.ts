@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import axios from "axios";
 import { parseWithAll, parseWithOnlySerie } from "../utils/parseIbgeResponse";
 
@@ -29,7 +27,10 @@ export async function getEfetivoDosRebanhos(years: number[], herds: string[]) {
         .then(function (response) {
             const { resultados } = response.data[0];
 
-            return parseWithAll(resultados);
+            return { 
+                ...parseWithAll(resultados),
+                un: response.data[0].unidade
+            };
         })
         .catch(function (error) {
             console.log(error);
@@ -71,7 +72,10 @@ export async function getVacasOrdenhadas(years: number[], locations: string[]) {
         .then(function (response) {
             const { series } = response.data[0].resultados[0]
 
-            return parseWithOnlySerie(series);
+            return { 
+                ...parseWithOnlySerie(series),
+                un: response.data[0].unidade
+            };
         })
         .catch(function (error) {
             console.log(error);
@@ -113,7 +117,10 @@ export async function getOvinosTosquiados(years: number[], locations: string[]) 
         .then(function (response) {
             const { series } = response.data[0].resultados[0]
 
-            return parseWithOnlySerie(series);
+            return { 
+                ...parseWithOnlySerie(series),
+                un: response.data[0].unidade
+            };
         })
         .catch(function (error) {
             console.log(error);
@@ -121,6 +128,7 @@ export async function getOvinosTosquiados(years: number[], locations: string[]) 
             return null;
         })
 }
+
 
 export async function getProduçãoPeixesFrutosMar(years: number[], products: string[]) {
     const productsNumber = products.map(x => {

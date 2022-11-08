@@ -18,19 +18,10 @@ import { BiaxialLineChart } from "../components/BiaxialLineChart";
 import { FilterForm } from "../components/FilterForm";
 import { PageComponent } from "../components/PageComponent";
 import { getEfetivoDosRebanhos } from "../services/dataServices";
+import { IData } from "../interfaces/data";
 import "../styles/chart.scss";
 
-type dataType = {
-  xLabels: string[];
-  datas: {
-    name: string;
-    value0: number;
-    value1?: number | undefined;
-    value2?: number | undefined;
-    value3?: number | undefined;
-    value4?: number | undefined;
-  }[];
-} | null;
+type dataType = IData | null;
 
 export function EfetivoDosRebanhos() {
   const rebanhos = [
@@ -143,6 +134,7 @@ export function EfetivoDosRebanhos() {
                 <BiaxialLineChart
                   data={data.datas}
                   xLabels={data.xLabels}
+                  yAxisLabel={data.un}
                   tooltip
                   legend
                 />
