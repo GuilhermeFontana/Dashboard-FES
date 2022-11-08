@@ -12,11 +12,11 @@ import { getRandomColors } from "../../utils/randomColor";
 import { IChart } from "../../interfaces/chart";
 import "./style.scss";
 
-type BarChartProps = IChart ;
+type BarChartProps = IChart;
 
-export function BarsChart (props: BarChartProps) {
+export function BarsChart(props: BarChartProps) {
   return (
-    <BarChart width={750} height={450} data={props.data}>
+    <BarChart width={750} height={450} data={props.data} margin={{ left: 75 }}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name">
         <Label
@@ -25,12 +25,12 @@ export function BarsChart (props: BarChartProps) {
           position="insideBottomLeft"
         />
       </XAxis>
-      <YAxis >
+      <YAxis>
         <Label
           value={props.yAxisLabel}
           position="insideBottomLeft"
           angle={-90}
-          offset={5}
+          offset={-20}
         />
       </YAxis>
       {props.legend && <Legend align="center" />}
