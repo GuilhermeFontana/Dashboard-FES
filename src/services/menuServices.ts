@@ -11,6 +11,11 @@ export function getMenus() {
         type: "chart" 
       }, 
       { 
+        title: "Produção de Origem Animal", 
+        path: "/ProducaoOrigemAnimal", 
+        type: "chart" 
+      },
+      { 
         title: "Produção de Peixes e Frutos do Mar", 
         path: "/ProduçãoPeixesFrutosMar", 
         type: "chart" 

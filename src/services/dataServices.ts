@@ -198,3 +198,39 @@ export async function getProduçãoPeixesFrutosMar(years: number[], products: st
             return null;
         })
 }
+
+export async function getProducaoOrigemAnimal(years: number[], products: string[], monetary: boolean) {
+    const productsNumber = products.map(x => {
+        switch (x) {
+            case "Casulos do Bicho-da-Seda":
+                return 2683
+            case "Lã":
+                return 2684
+            case "Leite":
+                return 2682
+            case "Mel de Abelha":
+                return 2687
+            case "Ovos de Codorna":
+                return 2686
+            default:
+                return 2685
+        }
+    })
+
+    const stringRequets = `https://servicodados.ibge.gov.br/api/v3/agregados/74/periodos/${years.join("|")}/variaveis/${monetary ? 215 : 106}?localidades=N1[all]&classificacao=80[${productsNumber.join(",")}]`
+
+    return await axios.get(stringRequets)
+        .then(function (response) {
+            const { resultados } = response.data[0];
+
+            return { 
+                ...parseWithAll(resultados),
+                un: response.data[0].unidade
+            };
+        })
+        .catch(function (error) {
+            console.log(error);
+
+            return null;
+        })
+}
