@@ -19,7 +19,7 @@ import { PageComponent } from "../components/PageComponent";
 import { FilterForm } from "../components/FilterForm";
 import { ComposedsChart } from "../components/ComposedsChart";
 import { getBiaxialLineChart } from "../services/service";
-import "../styles/chart3.scss";
+import "../styles/chart.scss";
 
 export function Chart3(props: any) {
   const selectValues = ["Opção 1", "Opção 2", "Opção 3", "Opção 4", "Opção 5"];
@@ -34,7 +34,7 @@ export function Chart3(props: any) {
 
   return (
     <PageComponent title="Gráfico 3">
-      <div className="grid1">
+      <div className="chart">
         <header>
           <strong>Titulo</strong>
           <div className="actions">

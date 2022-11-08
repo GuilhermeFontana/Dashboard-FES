@@ -19,7 +19,7 @@ import { PageComponent } from "../components/PageComponent";
 import { FilterForm } from "../components/FilterForm";
 import { PizzaChart } from "../components/PizzaChart";
 import { getPieCharts } from "../services/service";
-import "../styles/chart4.scss";
+import "../styles/chart.scss";
 
 export function Chart4(props: any) {
   const selectValues = ["Opção 1", "Opção 2", "Opção 3", "Opção 4", "Opção 5"];
@@ -34,7 +34,7 @@ export function Chart4(props: any) {
 
   return (
     <PageComponent title="Gráfico 4">
-      <div className="grid1">
+      <div className="chart">
         <header>
           <strong>Titulo</strong>
           <div className="actions">

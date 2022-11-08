@@ -110,7 +110,7 @@ export function ProducaoOrigemAnimal() {
                     ))}
                   </Select>
                 </FormControl>
-                <div className="form-line">
+                <div className="filter-row ">
                   <FormControl>
                     <FormLabel component="legend">Anos</FormLabel>
                     <FormGroup>
