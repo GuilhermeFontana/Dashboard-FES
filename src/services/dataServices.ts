@@ -129,8 +129,7 @@ export async function getOvinosTosquiados(years: number[], locations: string[]) 
         })
 }
 
-
-export async function getProduçãoPeixesFrutosMar(years: number[], products: string[]) {
+export async function getProduçãoPeixesFrutosMar(years: number[], products: string[], monetary: boolean) {
     const productsNumber = products.map(x => {
         switch (x) {
             case "Carpa":
@@ -182,13 +181,16 @@ export async function getProduçãoPeixesFrutosMar(years: number[], products: st
         }
     })
 
-    const stringRequets = `https://servicodados.ibge.gov.br/api/v3/agregados/3940/periodos/${years.join("|")}/variaveis/4146?localidades=N1[all]&classificacao=654[${productsNumber.join(",")}]`
+    const stringRequets = `https://servicodados.ibge.gov.br/api/v3/agregados/3940/periodos/${years.join("|")}/variaveis/${monetary ? 215 : 4146}?localidades=N1[all]&classificacao=654[${productsNumber.join(",")}]`
 
     return await axios.get(stringRequets)
         .then(function (response) {
             const { resultados } = response.data[0];
 
-            return parseWithAll(resultados);
+            return { 
+                ...parseWithAll(resultados),
+                un: response.data[0].unidade
+            };
         })
         .catch(function (error) {
             console.log(error);

@@ -44,6 +44,12 @@
                 
             };
         };
+
+        .form-line {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
     }
 
     .MuiCollapse-wrapperInner {

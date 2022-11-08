@@ -13,25 +13,19 @@ import {
   FormGroup,
   CircularProgress,
   ListSubheader,
+  Grid,
+  Switch,
 } from "@material-ui/core";
 import { FilterList, Refresh } from "@material-ui/icons";
 import { BarsChart } from "../components/BarsChart";
+import { BiaxialLineChart } from "../components/BiaxialLineChart";
 import { FilterForm } from "../components/FilterForm";
 import { PageComponent } from "../components/PageComponent";
 import { getProduçãoPeixesFrutosMar } from "../services/dataServices";
+import { IData } from "../interfaces/data";
 import "../styles/chart.scss";
 
-type dataType = {
-  xLabels: string[];
-  datas: {
-    name: string;
-    value0: number;
-    value1?: number | undefined;
-    value2?: number | undefined;
-    value3?: number | undefined;
-    value4?: number | undefined;
-  }[];
-} | null;
+type dataType = IData | null;
 
 export function ProduçãoPeixesFrutosMar() {
   const products = [
@@ -57,12 +51,13 @@ export function ProduçãoPeixesFrutosMar() {
     "Camarão",
     "Larvas e Pós-larvas de camarão",
     "Ostras, Vieiras e Mexilhões",
-    "Sementes de moluscos"
+    "Sementes de moluscos",
   ];
   const anos = ["2013", "2015", "2017", "2019", "2021"];
 
   const [data, setData] = React.useState<dataType>(null);
   const [formShow, setFormShow] = React.useState(true);
+  const [switchValue, setswitchValue] = React.useState(false);
   const [selectedProducts, setSelectedProducts] = React.useState<string[]>([]);
   const [selectedAnos, setSelectedAnos] = React.useState<string[]>([]);
 
@@ -95,7 +90,8 @@ export function ProduçãoPeixesFrutosMar() {
       setData(
         await getProduçãoPeixesFrutosMar(
           selectedAnos.map((x) => Number(x)),
-          selectedProducts
+          selectedProducts,
+          switchValue
         )
       );
     };
@@ -148,37 +144,68 @@ export function ProduçãoPeixesFrutosMar() {
                     )}
                   </Select>
                 </FormControl>
-                <FormControl>
-                  <FormLabel component="legend">Anos</FormLabel>
-                  <FormGroup>
-                    {anos.map((x) => {
-                      return (
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={selectedAnos.includes(x)}
-                              color="primary"
-                              onChange={handleChangeSelectedAnos}
-                              value={x}
-                              key={x}
-                            />
-                          }
-                          label={x}
-                        />
-                      );
-                    })}
-                  </FormGroup>
-                </FormControl>
+                <div className="form-line">
+                  <FormControl>
+                    <FormLabel component="legend">Anos</FormLabel>
+                    <FormGroup>
+                      {anos.map((x) => {
+                        return (
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={selectedAnos.includes(x)}
+                                color="primary"
+                                onChange={handleChangeSelectedAnos}
+                                value={x}
+                                key={x}
+                              />
+                            }
+                            label={x}
+                          />
+                        );
+                      })}
+                    </FormGroup>
+                  </FormControl>
+                  <Grid
+                    component="label"
+                    container
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Grid item>Quantidade</Grid>
+                    <Grid item>
+                      <Switch
+                        checked={switchValue}
+                        onChange={() => {
+                          setswitchValue(!switchValue);
+                        }}
+                        color="default"
+                      />
+                    </Grid>
+                    <Grid item>Valor</Grid>
+                  </Grid>
+                </div>
               </FilterForm>
             </Collapse>
             <Collapse in={!formShow}>
               {!!data && !!data.datas ? (
-                <BarsChart
-                  data={data.datas}
-                  xLabels={data.xLabels}
-                  tooltip
-                  legend
-                />
+                switchValue ? (
+                  <BiaxialLineChart
+                    data={data.datas}
+                    xLabels={data.xLabels}
+                    yAxisLabel={data.un}
+                    tooltip
+                    legend
+                  />
+                  ) : (
+                  <BarsChart
+                    data={data.datas}
+                    xLabels={data.xLabels}
+                    yAxisLabel={data.un}
+                    tooltip
+                    legend
+                  />
+                )
               ) : selectedAnos.length && selectedProducts.length ? (
                 <div className="no-chart-box">
                   <CircularProgress />
