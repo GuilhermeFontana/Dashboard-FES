@@ -1,0 +1,59 @@
+.chart {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    header {
+        width: 700px;
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        strong {
+            font-size: 36px;
+            color: #3f51b5;
+        };
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+
+            .MuiSvgIcon-root {
+                cursor: pointer;
+            }
+        }
+    }
+
+    main {
+        margin-top: 10px;
+
+        .no-chart-box {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+
+            strong {
+                font-size: 20px;
+                color: #5268e3;
+                
+            };
+        };
+
+        .filter-row {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .MuiCollapse-wrapperInner {
+        display: flex;
+        justify-content: center;
+    }
+}

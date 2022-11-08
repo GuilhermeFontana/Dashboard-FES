@@ -1,0 +1,27 @@
+.menu-icon {
+    color: #fff
+}
+
+.MuiDrawer-paper {
+    width: 250px;
+    background: #fff;
+    
+    .MuiListItem-root {
+        color: #3f51b5;
+        
+        cursor: pointer;
+        transition: 0.5s;
+        
+        .MuiTypography-body1 {
+            font-weight: 500;
+            margin-left: 7px;
+        }
+    }
+
+    .MuiListItem-root:hover {
+        background: #eceaea;
+
+        cursor: pointer;
+        transition: 0.5s;
+    }
+}

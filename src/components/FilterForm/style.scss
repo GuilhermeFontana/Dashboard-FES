@@ -1,0 +1,37 @@
+.filter_form {
+  width: 600px;
+  border: 2px;
+  
+  form {
+      width: 100%;
+      padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button[type="submit"] {
+    background-color: #3f51b5;
+    color: #fff;
+    
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: none;
+    
+    font-size: 20px;
+
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #2e3b84;
+
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
