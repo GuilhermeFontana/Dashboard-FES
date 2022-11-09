@@ -100,7 +100,19 @@ export function PageComponent(props: PageComponentProps) {
           </Typography>
         </Toolbar>
       </AppBar>
-      {props.children}
+      <main>{props.children}</main>
+      <footer>
+        Powered by{" "}
+        <a
+          href="https://github.com/GuilhermeFontana/Dashboard-FES"
+          target={"blank"}
+          title="GitHub do projeto"
+        >
+          Guiherme Fontana
+        </a>
+        {" - "}
+        Copyright © 2022
+      </footer>
     </div>
   );
 }
