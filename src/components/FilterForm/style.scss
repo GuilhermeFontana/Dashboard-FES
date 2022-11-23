@@ -3,11 +3,15 @@
   border: 2px;
   
   form {
-      width: 100%;
-      padding: 10px;
+    width: 100%;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .filter-row {
+      flex-direction: row;
+    }  
   }
 
   button[type="submit"] {
@@ -29,9 +33,27 @@
     background-color: #2e3b84;
 
   }
-
+  
   .MuiFormControl-root {
     width: 100%;
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter_form {
+    width: 90%;
+
+    form .filter-row {
+      flex-direction: column !important;  
+
+      .MuiFormControl-root, .MuiFormControl-root {
+            margin-bottom: 0;
+      }
+
+      .MuiGrid-root {
+        margin-bottom: 5px;
+      }
+    }
   }
 }

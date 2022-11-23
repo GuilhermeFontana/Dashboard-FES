@@ -1,3 +1,4 @@
+import React from "react";
 import {
   CartesianGrid,
   Label,
@@ -11,11 +12,30 @@ import {
 import { IChart } from "../../interfaces/chart";
 import { getRandomColors } from "../../utils/randomColor";
 
-type BiaxialLineChartProps = IChart ;
+type BiaxialLineChartProps = IChart;
 
 export function BiaxialLineChart(props: BiaxialLineChartProps) {
+  const [width, setWidth] = React.useState(750);
+
+  React.useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth > 800 ? 750 : window.innerWidth - 50);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <LineChart width={750} height={450} data={props.data} margin={{ left: 75 }}>
+    <LineChart
+      width={width}
+      height={450}
+      data={props.data}
+      margin={{ left: 75 }}
+    >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name">
         <Label
@@ -24,7 +44,7 @@ export function BiaxialLineChart(props: BiaxialLineChartProps) {
           position="insideBottomLeft"
         />
       </XAxis>
-      <YAxis mirror>
+      <YAxis yAxisId="left" mirror>
         <Label
           value={props.yAxisLabel}
           position="insideBottomLeft"
@@ -32,8 +52,6 @@ export function BiaxialLineChart(props: BiaxialLineChartProps) {
           offset={-40}
         />
       </YAxis>
-      <XAxis dataKey="name" />
-      <YAxis yAxisId="left" />
       {props.legend && <Legend align="center" />}
       {(props.tooltip ||
         props.tooltip === null ||
@@ -41,6 +59,7 @@ export function BiaxialLineChart(props: BiaxialLineChartProps) {
       {props.xLabels.map((label, index) => {
         return (
           <Line
+            key={`line-${index}`}
             yAxisId="left"
             type="monotone"
             dataKey={`value${index}`}

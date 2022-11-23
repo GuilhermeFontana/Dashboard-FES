@@ -1,0 +1,13 @@
+.page {
+    .MuiAppBar-root {
+      width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 600px){
+    .page {
+        .MuiAppBar-root {
+          width: 100vh;
+        }
+    }
+}
