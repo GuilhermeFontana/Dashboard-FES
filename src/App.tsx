@@ -10,6 +10,7 @@ import { ProduçãoPeixesFrutosMar } from "./page/ProduçãoPeixesFrutosMar";
 import { VacasOrdenhadas } from "./page/VacasOrdenhadas";
 
 import "./styles/global.scss";
+import "./styles/page.scss";
 
 function App() {
   return (
