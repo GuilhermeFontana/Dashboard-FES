@@ -44,7 +44,7 @@ export function BiaxialLineChart(props: BiaxialLineChartProps) {
           position="insideBottomLeft"
         />
       </XAxis>
-      <YAxis yAxisId="left" mirror>
+      <YAxis yAxisId="left">
         <Label
           value={props.yAxisLabel}
           position="insideBottomLeft"
