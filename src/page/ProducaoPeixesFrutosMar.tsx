@@ -27,7 +27,7 @@ import "../styles/chart.scss";
 
 type dataType = IData | null;
 
-export function ProduçãoPeixesFrutosMar() {
+export function ProducaoPeixesFrutosMar() {
   const products = [
     "Carpa",
     "Curimatã, curimbatá",

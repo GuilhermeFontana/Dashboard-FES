@@ -6,7 +6,7 @@ import { Chart4 } from "./page/Chart4";
 import { EfetivoDosRebanhos } from "./page/EfetivoDosRebanhos";
 import { OvinosTosquiados } from "./page/OvinosTosquiados";
 import { ProducaoOrigemAnimal } from "./page/ProducaoOrigemAnimal";
-import { ProduçãoPeixesFrutosMar } from "./page/ProduçãoPeixesFrutosMar";
+import { ProducaoPeixesFrutosMar } from "./page/ProducaoPeixesFrutosMar";
 import { VacasOrdenhadas } from "./page/VacasOrdenhadas";
 
 import "./styles/global.scss";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/EfetivoDosRebanhos" exact component={EfetivoDosRebanhos} />
         <Route path="/OvinosTosquiados" exact component={OvinosTosquiados} />
         <Route path="/ProducaoOrigemAnimal" exact component={ProducaoOrigemAnimal} />
-        <Route path="/ProduçãoPeixesFrutosMar" exact component={ProduçãoPeixesFrutosMar} />
+        <Route path="/ProducaoPeixesFrutosMar" exact component={ProducaoPeixesFrutosMar} />
         <Route path="/VacasOrdenhadas" exact component={VacasOrdenhadas} />
       </Switch>
     </BrowserRouter>

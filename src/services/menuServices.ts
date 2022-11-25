@@ -17,7 +17,7 @@ export function getMenus() {
       },
       { 
         title: "Produção de Peixes e Frutos do Mar", 
-        path: "/ProduçãoPeixesFrutosMar", 
+        path: "/ProducaoPeixesFrutosMar", 
         type: "chart" 
       }, 
       { 
