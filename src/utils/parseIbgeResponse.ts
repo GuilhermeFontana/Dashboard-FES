@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 type dataType = {
     xLabels: string[],
     datas: {
@@ -19,7 +17,7 @@ export function parseWithAll(resultados: any) {
     resultados.forEach((res: any) => {
         const { classificacoes, series } = res;
 
-        data.xLabels.push(Object.values(classificacoes[0].categoria)[0]);
+        data.xLabels.push(Object.values(classificacoes[0].categoria)[0] as string);
 
         if (index === 0) {
             data.datas = Object.entries(series[0].serie).map(([key, value]) => {
